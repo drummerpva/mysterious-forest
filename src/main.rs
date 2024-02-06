@@ -1,6 +1,8 @@
+use std::io::stdin;
+
 fn main() {
     let mut pontuacao: i32 = 0;
-    let escolha: i32 = 1;
+    let escolha: u32;
 
     println!("Bem-vindo à floresta misteriosa!");
     println!("Escolha sua próxima ação");
@@ -9,16 +11,20 @@ fn main() {
     println!("3 - Cruzar a ponte frágil");
     println!("4 - Descansar na beira do riacho");
 
+    let mut escolha_str = String::new();
+    stdin().read_line(&mut escolha_str).unwrap();
+    escolha = escolha_str
+        .trim()
+        .parse()
+        .expect("Dado informado inválido!");
+
     if escolha == 1 {
         pontuacao += 50;
-    }
-    if escolha == 2 {
+    } else if escolha == 2 {
         pontuacao -= 20;
-    }
-    if escolha == 3 {
+    } else if escolha == 3 {
         pontuacao -= 20;
-    }
-    if escolha == 4 {
+    } else if escolha == 4 {
         pontuacao += 10;
     }
 
